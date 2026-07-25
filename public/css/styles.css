@@ -1,0 +1,530 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f4f6f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #003366;
+  color: #fefbfb;
+  padding: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.nav-links,
+.auth-links {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a,
+.auth-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.auth-links a:hover {
+  color: #ffcc00;
+}
+
+.welcome-text {
+  color: #ffcc00;
+  font-weight: 500;
+}
+
+/* ---------- Hero section (used on every page, one single clean rule) ---------- */
+.hero {
+  padding: 30px 5%;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+.hero > p {
+  margin-top: 30px;
+  font-size: 18px;
+  color: #555;
+}
+
+/* Home page hero keeps its background image look */
+main > .hero:first-child {
+  background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)),
+              url('https://images.unsplash.com/photo-1570032257805-fc62c887bc4b') no-repeat center center/cover;
+  color: #222;
+}
+
+/* ---------- Category cards on home page ---------- */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.card {
+  background: rgb(231, 225, 225);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h2 {
+  margin-bottom: 0.5rem;
+  color: #003366;
+}
+
+.card img {
+  border-radius: 6px;
+  max-height: 180px;
+  object-fit: cover;
+}
+
+/* ---------- Animal figure cards (Herbivores/Carnivores/Omnivores/Birds) ---------- */
+figure {
+  display: inline-block;
+  width: 20%;
+  min-width: 220px;
+  margin: 15px;
+  vertical-align: top;
+  background-color: #faf3f3;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+figcaption {
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.animal-description {
+  text-align: left;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.animal-description p {
+  margin: 4px 0;
+}
+
+/* ---------- Reptiles page (kept its own card layout) ---------- */
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.reptile-card {
+  width: 20%;
+  min-width: 220px;
+  margin: 15px;
+  padding: 10px;
+  background-color: #9b9a9a;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.reptile-img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.reptile-info {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: left;
+  color: #444;
+}
+
+.reptile-info p {
+  margin: 4px 0;
+}
+
+/* ---------- Responsive layout ---------- */
+@media (max-width: 1000px) {
+  figure, .reptile-card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 600px) {
+  figure, .reptile-card {
+    width: 90%;
+  }
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background-color: #003366;
+  color: rgb(230, 216, 216);
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+
+/* ---------- Login / Register forms ---------- */
+.form-section {
+  padding: 3rem;
+  max-width: 400px;
+  margin: 3rem auto;
+  background: rgb(216, 191, 191);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.form-section h2 {
+  margin-bottom: 1rem;
+  color: #003366;
+}
+
+.form-section form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-section label {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #003366;
+}
+
+.form-section input,
+.form-section select,
+.form-section textarea {
+  padding: 0.8rem;
+  margin: 0.3rem 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+.form-section button {
+  padding: 0.8rem;
+  background-color: #d11349;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.form-section button:hover {
+  background-color: #0055a5;
+}
+
+.form-error {
+  background: #ffe0e0;
+  color: #a10000;
+  padding: 0.6rem;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.switch-link {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* ---------- Admin panel ---------- */
+.admin-section {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.admin-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-add {
+  background: #003366;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-add:hover {
+  background: #0055a5;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.admin-table th, .admin-table td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.admin-table th {
+  background: #003366;
+  color: #fff;
+}
+
+.admin-thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-edit, .btn-delete {
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn-edit {
+  background: #007bff;
+}
+
+.btn-edit:hover {
+  background: #0056b3;
+}
+
+.btn-delete {
+  background: #d11349;
+}
+
+.btn-delete:hover {
+  background: #a10a37;
+}
+
+.admin-form-section {
+  max-width: 500px;
+}
+
+/* ---------- Book Tickets nav link (stands out a bit) ---------- */
+.book-tickets-link {
+  background: #ffcc00;
+  color: #003366 !important;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  font-weight: 700 !important;
+}
+
+.book-tickets-link:hover {
+  background: #ffd633;
+  color: #003366 !important;
+}
+
+/* ---------- Ticket booking form ---------- */
+.ticket-form-section {
+  max-width: 480px;
+}
+
+.ticket-price-info {
+  font-size: 0.9rem;
+  color: #003366;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* ---------- Ticket confirmation ---------- */
+.ticket-confirmation {
+  max-width: 460px;
+}
+
+.ticket-card {
+  background: #fff;
+  border: 2px dashed #003366;
+  border-radius: 10px;
+  padding: 1.2rem;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.ticket-code {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #d11349;
+  margin-bottom: 1rem;
+}
+
+.ticket-details-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ticket-details-table td {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+
+.ticket-details-table td:first-child {
+  font-weight: 600;
+  color: #003366;
+  width: 40%;
+}
+
+/* ---------- Status badges (admin ticket table) ---------- */
+.status-badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.status-booked {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-used {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* ---------- Print ticket button ---------- */
+.ticket-actions {
+  margin-top: 1.2rem;
+}
+
+.btn-print {
+  padding: 0.7rem 1.4rem;
+  background: #003366;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 0.8rem;
+}
+
+.btn-print:hover {
+  background: #0055a5;
+}
+
+.ticket-print-header {
+  display: none; /* only shown when printing */
+}
+
+/* ---------- Print-only styles ---------- */
+@media print {
+  /* Hide everything except the ticket card */
+  header, footer, .no-print {
+    display: none !important;
+  }
+
+  body, .form-section, main {
+    background: #fff !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .ticket-confirmation {
+    max-width: 100% !important;
+  }
+
+  .ticket-card {
+    border: 2px solid #003366 !important;
+    box-shadow: none !important;
+    margin: 20px auto !important;
+    max-width: 400px;
+  }
+
+  .ticket-print-header {
+    display: block !important;
+    text-align: center;
+    margin-bottom: 0.8rem;
+  }
+
+  .ticket-zoo-name {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #003366;
+  }
+}

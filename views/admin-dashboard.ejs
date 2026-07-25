@@ -1,0 +1,46 @@
+<%- include('partials/header') %>
+
+  <main>
+    <section class="admin-section">
+      <div class="admin-header-row">
+        <h1>Admin Panel — Manage Animals</h1>
+        <div style="display:flex; gap:0.8rem;">
+          <a href="/admin/tickets" class="btn-add" style="background:#0055a5;">🎟️ View Ticket Bookings</a>
+          <a href="/admin/add" class="btn-add">+ Add New Animal</a>
+        </div>
+      </div>
+
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Scientific Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% animals.forEach(function(animal) { %>
+          <tr>
+            <td><img src="/<%= animal.imagePath %>" alt="<%= animal.name %>" class="admin-thumb"></td>
+            <td><%= animal.name %></td>
+            <td><%= animal.category %></td>
+            <td><em><%= animal.scientificName %></em></td>
+            <td class="admin-actions">
+              <a href="/admin/edit/<%= animal._id %>" class="btn-edit">Edit</a>
+              <form action="/admin/delete/<%= animal._id %>" method="POST" onsubmit="return confirm('Delete this animal permanently?');" style="display:inline;">
+                <button type="submit" class="btn-delete">Delete</button>
+              </form>
+            </td>
+          </tr>
+          <% }); %>
+          <% if (animals.length === 0) { %>
+          <tr><td colspan="5">No animals yet. Click "Add New Animal" to get started.</td></tr>
+          <% } %>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+<%- include('partials/footer') %>

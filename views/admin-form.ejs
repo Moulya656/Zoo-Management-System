@@ -1,0 +1,50 @@
+<%- include('partials/header') %>
+
+  <main>
+    <section class="form-section admin-form-section">
+      <h2><%= animal ? 'Edit Animal' : 'Add New Animal' %></h2>
+      <% if (error) { %>
+        <p class="form-error"><%= error %></p>
+      <% } %>
+
+      <form action="<%= formAction %>" method="POST" enctype="multipart/form-data">
+        <label>Name</label>
+        <input type="text" name="name" value="<%= animal ? animal.name : '' %>" required>
+
+        <label>Category</label>
+        <select name="category" required>
+          <option value="">-- Select Category --</option>
+          <% ['Herbivore','Carnivore','Omnivore','Bird','Reptile'].forEach(function(cat) { %>
+            <option value="<%= cat %>" <%= animal && animal.category === cat ? 'selected' : '' %>><%= cat %></option>
+          <% }); %>
+        </select>
+
+        <label>Scientific Name</label>
+        <input type="text" name="scientificName" value="<%= animal ? animal.scientificName : '' %>" required>
+
+        <label>Species</label>
+        <input type="text" name="species" value="<%= animal ? animal.species : '' %>" required>
+
+        <label>Average Lifespan</label>
+        <input type="text" name="lifespan" placeholder="e.g. 10-15 years in the wild" value="<%= animal ? animal.lifespan : '' %>" required>
+
+        <label>Short Caption (shown under the image)</label>
+        <input type="text" name="caption" placeholder="e.g. The fastest land animal." value="<%= animal ? animal.caption : '' %>" required>
+
+        <label>Description</label>
+        <textarea name="description" rows="4" required><%= animal ? animal.description : '' %></textarea>
+
+        <label>Image <%= animal ? '(leave empty to keep current image)' : '' %></label>
+        <input type="file" name="image" accept="image/*" <%= animal ? '' : 'required' %>>
+        <% if (animal && animal.imagePath) { %>
+          <img src="/<%= animal.imagePath %>" alt="current image" class="admin-thumb" style="margin-top:10px;">
+        <% } %>
+
+        <button type="submit"><%= animal ? 'Save Changes' : 'Add Animal' %></button>
+      </form>
+
+      <p class="switch-link"><a href="/admin">&larr; Back to Admin Panel</a></p>
+    </section>
+  </main>
+
+<%- include('partials/footer') %>

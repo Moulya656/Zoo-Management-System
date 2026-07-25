@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof pageTitle !== 'undefined' ? pageTitle + ' - ZooMS' : 'ZooMS' %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">ZooSphere</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <% if (typeof pageTitle !== 'undefined') { %>
+          <li><a href="/herbivores">Herbivores</a></li>
+          <li><a href="/carnivores">Carnivores</a></li>
+          <li><a href="/omnivores">Omnivores</a></li>
+          <li><a href="/birds">Birds</a></li>
+          <li><a href="/reptiles">Reptiles</a></li>
+          <% } %>
+          <li><a href="/tickets/book" class="book-tickets-link">Book Tickets</a></li>
+        </ul>
+      </nav>
+      <div class="auth-links">
+        <% if (currentUser) { %>
+          <span class="welcome-text">Hi, <%= currentUser.username %></span>
+          <% if (currentUser.role === 'admin') { %>
+            <a href="/admin">Admin Panel</a>
+          <% } %>
+          <a href="/logout">Logout</a>
+        <% } else { %>
+          <a href="/login">Login</a>
+          <a href="/register">Register</a>
+        <% } %>
+      </div>
+    </div>
+  </header>

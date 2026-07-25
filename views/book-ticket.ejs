@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+
+  <main>
+    <section class="form-section ticket-form-section">
+      <h2>Book Zoo Tickets</h2>
+      <p class="ticket-price-info">Adult: ₹<%= adultPrice %> &nbsp;|&nbsp; Child (under 12): ₹<%= childPrice %></p>
+
+      <% if (error) { %>
+        <p class="form-error"><%= error %></p>
+      <% } %>
+
+      <form action="/tickets/book" method="POST">
+        <label>Full Name</label>
+        <input type="text" name="visitorName" placeholder="Your name" required>
+
+        <label>Email</label>
+        <input type="email" name="email" placeholder="you@example.com" required>
+
+        <label>Phone Number</label>
+        <input type="tel" name="phone" placeholder="Your phone number" required>
+
+        <label>Visit Date</label>
+        <input type="date" name="visitDate" required>
+
+        <label>Number of Adults</label>
+        <input type="number" name="adultCount" min="0" value="1" required>
+
+        <label>Number of Children</label>
+        <input type="number" name="childCount" min="0" value="0" required>
+
+        <button type="submit">Book Tickets</button>
+      </form>
+    </section>
+  </main>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,59 @@
+<%- include('partials/header') %>
+
+  <main>
+    <section class="admin-section">
+      <div class="admin-header-row">
+        <h1>Admin Panel — Ticket Bookings</h1>
+        <a href="/admin" class="btn-add">&larr; Back to Animals</a>
+      </div>
+
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Ticket Code</th>
+            <th>Visitor</th>
+            <th>Contact</th>
+            <th>Visit Date</th>
+            <th>Adults</th>
+            <th>Children</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% tickets.forEach(function(ticket) { %>
+          <tr>
+            <td><strong><%= ticket.ticketCode %></strong></td>
+            <td><%= ticket.visitorName %></td>
+            <td><%= ticket.email %><br><%= ticket.phone %></td>
+            <td><%= ticket.visitDate.toDateString() %></td>
+            <td><%= ticket.adultCount %></td>
+            <td><%= ticket.childCount %></td>
+            <td>₹<%= ticket.totalPrice %></td>
+            <td><span class="status-badge status-<%= ticket.status %>"><%= ticket.status %></span></td>
+            <td class="admin-actions">
+              <% if (ticket.status !== 'used') { %>
+              <form action="/admin/tickets/<%= ticket._id %>/status" method="POST" style="display:inline;">
+                <input type="hidden" name="status" value="used">
+                <button type="submit" class="btn-edit">Mark Used</button>
+              </form>
+              <% } %>
+              <% if (ticket.status !== 'cancelled') { %>
+              <form action="/admin/tickets/<%= ticket._id %>/status" method="POST" style="display:inline;" onsubmit="return confirm('Cancel this ticket?');">
+                <input type="hidden" name="status" value="cancelled">
+                <button type="submit" class="btn-delete">Cancel</button>
+              </form>
+              <% } %>
+            </td>
+          </tr>
+          <% }); %>
+          <% if (tickets.length === 0) { %>
+          <tr><td colspan="9">No ticket bookings yet.</td></tr>
+          <% } %>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+<%- include('partials/footer') %>

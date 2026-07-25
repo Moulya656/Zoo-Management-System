@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+
+  <main>
+    <section class="form-section ticket-confirmation">
+      <div class="no-print">
+        <h2>🎟️ Booking Confirmed!</h2>
+        <p>Show this ticket code at the entrance on your visit date.</p>
+      </div>
+
+      <div class="ticket-card" id="printable-ticket">
+        <div class="ticket-print-header">
+          <p class="ticket-zoo-name">ZooMS — Entry Ticket</p>
+        </div>
+        <p class="ticket-code"><%= ticket.ticketCode %></p>
+        <table class="ticket-details-table">
+          <tr><td>Name</td><td><%= ticket.visitorName %></td></tr>
+          <tr><td>Email</td><td><%= ticket.email %></td></tr>
+          <tr><td>Phone</td><td><%= ticket.phone %></td></tr>
+          <tr><td>Visit Date</td><td><%= ticket.visitDate.toDateString() %></td></tr>
+          <tr><td>Adults</td><td><%= ticket.adultCount %></td></tr>
+          <tr><td>Children</td><td><%= ticket.childCount %></td></tr>
+          <tr><td>Total Paid</td><td>₹<%= ticket.totalPrice %></td></tr>
+          <tr><td>Status</td><td><%= ticket.status %></td></tr>
+        </table>
+      </div>
+
+      <div class="ticket-actions no-print">
+        <button type="button" onclick="window.print()" class="btn-print">🖨️ Print Ticket</button>
+        <p class="switch-link"><a href="/">&larr; Back to Home</a></p>
+      </div>
+    </section>
+  </main>
+
+<%- include('partials/footer') %>
