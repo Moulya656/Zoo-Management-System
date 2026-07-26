@@ -1,4 +1,4 @@
-# Zoo Management System (ZooMS)
+# Zoo Management System (ZooSphere)
 
 A full-stack Zoo Management System built with **Node.js + Express + MongoDB + EJS**.
 
